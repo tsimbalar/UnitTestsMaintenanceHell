@@ -24,7 +24,7 @@ namespace ProductionCode.Lib
             var user = _userRepository.GetById(userId);
             if(user == null) throw new UserNotFoundException();
             _mailSender.Send(user.EmailAddress, message);
-            //_smsSender.Send(new Sms(user.PhoneNumber, "rien"));
+            //_smsSender.Send(new Sms(user.PhoneNumber, message));
 
         }
     }

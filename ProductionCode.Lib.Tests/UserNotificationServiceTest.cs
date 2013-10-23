@@ -20,7 +20,7 @@ namespace ProductionCode.Lib.Tests
             userRepository.Setup(r => r.GetById(unknownUserId)).Returns<User>(null);
 
             var sut = new UserNotificationService(userRepository.Object, new Mock<IEmailSender>().Object);
-            // var sut = MakeSut(userRepository.Object)
+            // var sut = MakeSut(userRepository.Object);
 
             // Act
             sut.Notify(unknownUserId, "whatever");
