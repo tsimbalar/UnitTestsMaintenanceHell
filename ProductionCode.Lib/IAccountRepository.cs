@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace ProductionCode.Lib
 {
-    public class Class1
+    public interface IAccountRepository
     {
+        Account GetById(int accountId);
     }
 }
