@@ -100,6 +100,30 @@ namespace ProductionCode.Lib.Tests
             Assert.AreEqual(expectedBalance, source.Balance, "Should have taken amount from source's balance");
         }
 
+
+        [TestMethod]
+        public void Transfer_must_notify_recipient()
+        {
+            // Arrange		
+            var source = AnyAccount(44);
+            var destination = AnyAccount(45);
+            var repo = new Mock<IAccountRepository>();
+            repo.Setup(r => r.GetById(source.Id)).Returns(source);
+            repo.Setup(r => r.GetById(destination.Id)).Returns(destination);
+
+
+            var notifier = new Mock<IUserNotificationService>();
+            notifier.Setup(n => n.Notify(It.IsAny<int>(), It.IsAny<string>()));
+
+            var sut = MakeSut(repo.Object, notifier.Object);
+
+            // Act
+            sut.Transfer(source.Id, destination.Id, 45.50m);
+
+            // Assert		
+            notifier.Verify(n=> n.Notify(destination.UserId, "Money was transferred to your account"));
+        }
+
         #region Test Helper Methods
 
         private static BankingSystem MakeSut(
@@ -108,7 +132,7 @@ namespace ProductionCode.Lib.Tests
         {
 
             repo = repo ?? new Mock<IAccountRepository>(MockBehavior.Strict).Object;
-            userNotificationService = userNotificationService ?? new Mock<IUserNotificationService>(MockBehavior.Strict).Object;
+            userNotificationService = userNotificationService ?? new Mock<IUserNotificationService>().Object;
 
             return new BankingSystem(repo, userNotificationService);
         }
