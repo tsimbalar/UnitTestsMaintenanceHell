@@ -39,12 +39,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Account.cs" />
-    <Compile Include="AccountNotfFoundException.cs" />
+    <Compile Include="Communications\ISmsSender.cs" />
+    <Compile Include="Data\Account.cs" />
+    <Compile Include="Data\AccountNotfFoundException.cs" />
     <Compile Include="BankingSystem.cs" />
-    <Compile Include="IAccountRepository.cs" />
-    <Compile Include="IUserService.cs" />
+    <Compile Include="Data\IAccountRepository.cs" />
+    <Compile Include="Communications\IEmailSender.cs" />
+    <Compile Include="Data\IUserRepository.cs" />
+    <Compile Include="IUserNotificationService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Data\User.cs" />
+    <Compile Include="Data\UserNotFoundException.cs" />
+    <Compile Include="UserNotificationService.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

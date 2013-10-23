@@ -2,6 +2,7 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
 using Ploeh.AutoFixture;
+using ProductionCode.Lib.Data;
 
 namespace ProductionCode.Lib.Tests
 {
@@ -37,7 +38,7 @@ namespace ProductionCode.Lib.Tests
             var unknownAccountId = 666;
             var noTargetAccountRepo = new Mock<IAccountRepository>();
             noTargetAccountRepo.Setup(r => r.GetById(existingAccountId))
-                             .Returns(MakeAccount(existingAccountId));
+                             .Returns(AnyAccount(existingAccountId));
             noTargetAccountRepo.Setup(r => r.GetById(unknownAccountId))
                              .Returns<Account>(null);
 
@@ -56,15 +57,15 @@ namespace ProductionCode.Lib.Tests
         public void Transfer_must_transfer_amount_to_destination()
         {
             // Arrange	
-            var source = MakeAccount();
-            var destination = MakeAccount();
+            var source = AnyAccount(44);
+            var destination = AnyAccount(45);
+            var amount = 28.34m;
+            var expectedBalance = destination.Balance + amount;
 
             var repo = new Mock<IAccountRepository>();
             repo.Setup(r => r.GetById(source.Id)).Returns(source);
             repo.Setup(r => r.GetById(destination.Id)).Returns(destination);
 
-            var amount = 28.34m;
-            var expectedBalance = destination.Balance + amount;
 
             var sut = MakeSut(repo.Object);
 
@@ -75,19 +76,20 @@ namespace ProductionCode.Lib.Tests
             Assert.AreEqual(expectedBalance, destination.Balance, "Should have added amount to destination's balance");
         }
 
+
         [TestMethod]
         public void Transfer_must_take_amount_from_source()
         {
             // Arrange	
-            var source = MakeAccount();
-            var destination = MakeAccount();
+            var source = AnyAccount(42);
+            var destination = AnyAccount(43);
+
+            var amount = 17.34m;
+            var expectedBalance = source.Balance - amount;
 
             var repo = new Mock<IAccountRepository>();
             repo.Setup(r => r.GetById(source.Id)).Returns(source);
             repo.Setup(r => r.GetById(destination.Id)).Returns(destination);
-
-            var amount = 17.34m;
-            var expectedBalance = source.Balance - amount;
 
             var sut = MakeSut(repo.Object);
 
@@ -98,30 +100,25 @@ namespace ProductionCode.Lib.Tests
             Assert.AreEqual(expectedBalance, source.Balance, "Should have taken amount from source's balance");
         }
 
-
-
         #region Test Helper Methods
 
         private static BankingSystem MakeSut(
                     IAccountRepository repo = null,
-                    IUserService userService = null
-            )
+                    IUserNotificationService userNotificationService = null)
         {
-            repo = repo ?? new Mock<IAccountRepository>(MockBehavior.Strict).Object;
-            userService = userService ??  new Mock<IUserService>(MockBehavior.Strict).Object;
 
-            return new BankingSystem(repo, userService);
+            repo = repo ?? new Mock<IAccountRepository>(MockBehavior.Strict).Object;
+            userNotificationService = userNotificationService ?? new Mock<IUserNotificationService>(MockBehavior.Strict).Object;
+
+            return new BankingSystem(repo, userNotificationService);
         }
 
-        private static Account MakeAccount(int? accountId = null)
+        private static Account AnyAccount(int accountId)
         {
+
             var fixture = new Fixture();
             var account = fixture.Create<Account>();
-            if (accountId.HasValue)
-            {
-                account.Id = accountId.Value;
-            }
-
+            account.Id = accountId;
             return account;
         }
 

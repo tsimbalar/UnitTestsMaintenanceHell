@@ -1,4 +1,5 @@
 ﻿using System;
+using ProductionCode.Lib.Data;
 
 namespace ProductionCode.Lib
 {
@@ -6,22 +7,24 @@ namespace ProductionCode.Lib
     {
         private readonly IAccountRepository _accountRepository;
 
-        public BankingSystem(IAccountRepository accountRepository, IUserService userService)
+        public BankingSystem(IAccountRepository accountRepository, IUserNotificationService userNotificationService)
         {
             if (accountRepository == null) throw new ArgumentNullException("accountRepository");
             _accountRepository = accountRepository;
         }
 
-        public void Transfer(int fromAccountId, int toAccountId, decimal amount)
+        public decimal Transfer(int fromAccountId, int toAccountId, decimal amount)
         {
             var source = _accountRepository.GetById(fromAccountId);
             if(source == null) throw new AccountNotfFoundException();
+
             var destination = _accountRepository.GetById(toAccountId);
             if(destination == null) throw  new AccountNotfFoundException();
 
-            source.Balance = source.Balance - amount;
-            destination.Balance = destination.Balance + amount;
-            
+            source.Remove(amount);
+            destination.Add(amount);
+
+            return destination.Balance;
         }
     }
 }
