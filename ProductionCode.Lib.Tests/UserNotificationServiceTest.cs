@@ -1,5 +1,6 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
+using Ploeh.SemanticComparison.Fluent;
 using ProductionCode.Lib.Communications;
 using ProductionCode.Lib.Data;
 
@@ -78,8 +79,7 @@ namespace ProductionCode.Lib.Tests
 
         //    // Assert	
         //    Assert.IsNotNull(actualSms, "Should have sent an sms");
-        //    actualSms.AsSource().OfLikeness<Sms>()
-        //        .ShouldEqual(expectedSms);
+        //    AssertAreEquivalent(expectedSms, actualSms);
             
         //}
 
@@ -108,6 +108,16 @@ namespace ProductionCode.Lib.Tests
             //var fixture = new Fixture();
             //return fixture.Create<User>();
             return new User(13, "tibo.desodt@gmail.com");
+        }
+
+        private static void AssertAreEquivalent(Sms expected, Sms actual)
+        {
+            Assert.AreEqual(expected.Message, actual.Message, "Sms.Message");
+            Assert.AreEqual(expected.PhoneNumber, actual.PhoneNumber, "Sms.PhoneNumber");
+
+            //actual.AsSource().OfLikeness<Sms>()
+            //    .ShouldEqual(expected);
+
         }
 
         #endregion
