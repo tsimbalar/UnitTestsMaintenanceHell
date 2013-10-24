@@ -55,6 +55,9 @@ namespace ProductionCode.Lib.Tests
                                     Times.Once);
         }
 
+
+        //TODO: NotifyUser should also send an SMS to the user
+
         //[TestMethod]
         //public void NotifyUser_must_send_an_sms()
         //{

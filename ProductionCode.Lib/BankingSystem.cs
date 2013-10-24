@@ -24,7 +24,7 @@ namespace ProductionCode.Lib
             if(destination == null) throw  new AccountNotfFoundException();
 
             source.Remove(amount);
-            destination.Add(amount);
+            //destination.Add(amount);
 
             _userNotificationService.Notify(destination.UserId, "Money was transferred to your account");
 

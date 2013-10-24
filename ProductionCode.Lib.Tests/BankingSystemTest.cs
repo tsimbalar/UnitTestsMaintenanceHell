@@ -9,6 +9,8 @@ namespace ProductionCode.Lib.Tests
     [TestClass]
     public class BankingSystemTest
     {
+        // TODO : test that one cannot pass negative amount to transfer !
+
         [TestMethod]
         [ExpectedException(typeof(AccountNotfFoundException))]
         public void Transfer_with_unknown_fromAccountId_must_throw_AccountNofFoundException()
@@ -53,6 +55,7 @@ namespace ProductionCode.Lib.Tests
         }
 
 
+        // TODO:  fix the test Transfer_must_transfer_amount_to_destination
         [TestMethod]
         public void Transfer_must_transfer_amount_to_destination()
         {
@@ -139,7 +142,6 @@ namespace ProductionCode.Lib.Tests
 
         private static Account AnyAccount(int accountId)
         {
-
             var fixture = new Fixture();
             var account = fixture.Create<Account>();
             account.Id = accountId;
