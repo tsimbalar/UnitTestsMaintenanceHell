@@ -1,0 +1,26 @@
+﻿<wpf:ResourceDictionary xml:space="preserve" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:s="clr-namespace:System;assembly=mscorlib" xmlns:ss="urn:shemas-jetbrains-com:settings-storage-xaml" xmlns:wpf="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
+	<s:Boolean x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=DCB2BF199864F245AC3D0FB5B687943B/@KeyIndexDefined">True</s:Boolean>
+	<s:String x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=DCB2BF199864F245AC3D0FB5B687943B/Shortcut/@EntryValue">aaa</s:String>
+	<s:String x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=DCB2BF199864F245AC3D0FB5B687943B/Description/@EntryValue">Arrange/Act/Assert Unit Test</s:String>
+	<s:String x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=DCB2BF199864F245AC3D0FB5B687943B/Text/@EntryValue">[Microsoft.VisualStudio.TestTools.UnitTesting.TestMethod]&#xD;
+      public void $SutMethod$_with_$StateTesting$_must_$ExpectedResult$()&#xD;
+      {&#xD;
+		// Arrange		&#xD;
+        $END$		&#xD;
+		// Act&#xD;
+&#xD;
+		// Assert		&#xD;
+		Assert.Inconclusive("complete the test");&#xD;
+      }</s:String>
+	<s:Boolean x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=DCB2BF199864F245AC3D0FB5B687943B/Reformat/@EntryValue">True</s:Boolean>
+	<s:Boolean x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=DCB2BF199864F245AC3D0FB5B687943B/ShortenQualifiedReferences/@EntryValue">True</s:Boolean>
+	<s:Boolean x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=DCB2BF199864F245AC3D0FB5B687943B/Applicability/=Live/@EntryIndexedValue">True</s:Boolean>
+	<s:Boolean x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=DCB2BF199864F245AC3D0FB5B687943B/Scope/=B68999B9D6B43E47A02B22C12A54C3CC/@KeyIndexDefined">True</s:Boolean>
+	<s:String x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=DCB2BF199864F245AC3D0FB5B687943B/Scope/=B68999B9D6B43E47A02B22C12A54C3CC/Type/@EntryValue">InCSharpTypeMember</s:String>
+	<s:String x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=DCB2BF199864F245AC3D0FB5B687943B/Scope/=B68999B9D6B43E47A02B22C12A54C3CC/CustomProperties/=minimumLanguageVersion/@EntryIndexedValue">2.0</s:String>
+	<s:Boolean x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=DCB2BF199864F245AC3D0FB5B687943B/Field/=SutMethod/@KeyIndexDefined">True</s:Boolean>
+	<s:Int64 x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=DCB2BF199864F245AC3D0FB5B687943B/Field/=SutMethod/Order/@EntryValue">0</s:Int64>
+	<s:Boolean x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=DCB2BF199864F245AC3D0FB5B687943B/Field/=StateTesting/@KeyIndexDefined">True</s:Boolean>
+	<s:Int64 x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=DCB2BF199864F245AC3D0FB5B687943B/Field/=StateTesting/Order/@EntryValue">1</s:Int64>
+	<s:Boolean x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=DCB2BF199864F245AC3D0FB5B687943B/Field/=ExpectedResult/@KeyIndexDefined">True</s:Boolean>
+	<s:Int64 x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=DCB2BF199864F245AC3D0FB5B687943B/Field/=ExpectedResult/Order/@EntryValue">2</s:Int64></wpf:ResourceDictionary>
