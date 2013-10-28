@@ -8,7 +8,7 @@ namespace ProductionCode.Lib
     {
         private readonly IUserRepository _userRepository;
         private readonly IEmailSender _mailSender;
-        private readonly ISmsSender _smsSender;
+        //private readonly ISmsSender _smsSender;
 
         public UserNotificationService(IUserRepository userRepository, IEmailSender mailSender)//, ISmsSender smsSender)
         {

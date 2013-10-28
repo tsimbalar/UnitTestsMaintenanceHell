@@ -134,7 +134,7 @@ namespace ProductionCode.Lib.Tests
                     IUserNotificationService userNotificationService = null)
         {
 
-            repo = repo ?? new Mock<IAccountRepository>(MockBehavior.Strict).Object;
+            repo = repo ?? new Mock<IAccountRepository>().Object;
             userNotificationService = userNotificationService ?? new Mock<IUserNotificationService>().Object;
 
             return new BankingSystem(repo, userNotificationService);
